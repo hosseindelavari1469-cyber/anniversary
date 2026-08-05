@@ -1,38 +1,74 @@
-// ایجاد قلب‌های شناور
-function createHeart() {
-    const heart = document.createElement("div");
+const music = document.getElementById("music");
+const btn = document.getElementById("playBtn");
+const timer = document.getElementById("timer");
 
-    heart.innerHTML = "❤️";
-    heart.style.position = "fixed";
-    heart.style.left = Math.random() * window.innerWidth + "px";
-    heart.style.top = "-30px";
-    heart.style.fontSize = (20 + Math.random() * 20) + "px";
-    heart.style.pointerEvents = "none";
-    heart.style.zIndex = "9999";
+btn.onclick = function () {
+    music.play();
 
-    document.body.appendChild(heart);
+    btn.innerHTML = "❤️ دوستت دارم ❤️";
 
-    let y = -30;
+    startHearts();
+};
 
-    const timer = setInterval(() => {
+const weddingDate = new Date("2020-08-07");
 
-        y += 3;
+function updateTimer(){
 
-        heart.style.top = y + "px";
+    const now = new Date();
 
-        if (y > window.innerHeight) {
-            clearInterval(timer);
-            heart.remove();
-        }
+    const diff = now - weddingDate;
 
-    }, 20);
+    const days = Math.floor(diff / (1000*60*60*24));
+
+    timer.innerHTML =
+    "💍 " + days + " روز عاشقانه کنار هم 💍";
+
 }
 
-setInterval(createHeart, 400);
+setInterval(updateTimer,1000);
 
-// پیام عاشقانه
-function love(){
+updateTimer();
 
-    alert("💖 محدثه جان، سالگرد ازدواجمان مبارک. دوستت دارم تا همیشه... ❤️");
+function startHearts(){
+
+setInterval(function(){
+
+const heart=document.createElement("div");
+
+heart.innerHTML="❤️";
+
+heart.style.position="fixed";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.top="-50px";
+
+heart.style.fontSize=(20+Math.random()*30)+"px";
+
+heart.style.pointerEvents="none";
+
+heart.style.zIndex="9999";
+
+document.body.appendChild(heart);
+
+let y=-50;
+
+const move=setInterval(function(){
+
+y+=3;
+
+heart.style.top=y+"px";
+
+if(y>window.innerHeight){
+
+clearInterval(move);
+
+heart.remove();
+
+}
+
+},20);
+
+},300);
 
 }
