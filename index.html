@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>سالگرد ازدواج حسین و محدثه ❤️</title>
+<title>سالگرد ازدواج حسین ❤️ محدثه</title>
 
 <link rel="stylesheet" href="style.css">
 
 </head>
-
 <body>
+
+<div class="overlay"></div>
 
 <div class="container">
 
@@ -20,81 +18,35 @@
 
 <h2>حسین ❤️ محدثه</h2>
 
-<img src="family.jpg" alt="حسین و محدثه">
+<img src="family.jpg" class="photo">
 
-<p>
-
+<p id="message">
 محدثه جان...
-
 <br><br>
-
-امروز فقط یک روز در تقویم نیست...
-
+از روزی که کنارم آمدی، زندگی من رنگ دیگری گرفت.
 <br><br>
-
-امروز سالگرد روزی است که خدا زیباترین هدیه زندگی‌ام را به من داد.
-
+هر روز خدا را شکر می‌کنم که تو را به من هدیه داد.
 <br><br>
-
-از اینکه همسر، دوست، همدم و آرامش قلب من شدی،
-بی‌نهایت سپاسگزارم.
-
+امروز، کنار تو و فرزند عزیزمان،
+خوشبخت‌ترین مرد دنیا هستم.
 <br><br>
-
-هر لحظه کنار تو، برای من ارزشمندترین خاطره زندگی است.
-
-<br><br>
-
-از خدا می‌خواهم تا همیشه کنار هم،
-در آرامش، عشق و سلامتی زندگی کنیم.
-
-<br><br>
-
-❤️ دوستت دارم...
-
-امروز...
-
-فردا...
-
-و تا همیشه... ❤️
-
+سالگرد ازدواجمان مبارک عشق همیشگی من...
+❤️
 </p>
 
 <h2 id="timer"></h2>
 
-<button onclick="love()">
-
-❤️ دوستت دارم ❤️
-
+<button id="playBtn">
+🎵 پخش موسیقی
 </button>
 
 </div>
 
-<script>
-
-const weddingDate = new Date("2020-08-07");
-
-function updateTimer(){
-
-const now = new Date();
-
-const diff = now - weddingDate;
-
-const days = Math.floor(diff / (1000*60*60*24));
-
-document.getElementById("timer").innerHTML =
-"💍 " + days + " روز از آغاز زندگی عاشقانه ما گذشته است 💍";
-
-}
-
-setInterval(updateTimer,1000);
-
-updateTimer();
-
-</script>
+<audio id="music">
+<source src="music.mp3" type="audio/mpeg">
+</audio>
 
 <script src="script.js"></script>
 
 </body>
-
 </html>
