@@ -1,150 +1,99 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>سالگرد ازدواج حسین و محدثه</title>
 
-<style>
+<title>سالگرد ازدواج حسین و محدثه ❤️</title>
 
-body{
-margin:0;
-padding:0;
-background:linear-gradient(180deg,#120018,#2b0036,#43004d);
-font-family:tahoma;
-color:white;
-text-align:center;
-overflow:hidden;
-}
-
-h1{
-margin-top:40px;
-font-size:45px;
-color:#FFD700;
-animation:fade 3s;
-}
-
-h2{
-font-size:30px;
-color:white;
-}
-
-p{
-font-size:22px;
-line-height:45px;
-width:80%;
-margin:auto;
-}
-
-img{
-width:320px;
-border-radius:25px;
-margin-top:20px;
-box-shadow:0 0 30px pink;
-}
-
-button{
-margin-top:30px;
-padding:18px 40px;
-font-size:22px;
-background:#ff007f;
-color:white;
-border:none;
-border-radius:50px;
-cursor:pointer;
-}
-
-button:hover{
-background:red;
-}
-
-#heart{
-position:absolute;
-font-size:30px;
-animation:fall linear infinite;
-color:pink;
-}
-
-@keyframes fall{
-0%{
-transform:translateY(-50px);
-opacity:1;
-}
-100%{
-transform:translateY(110vh);
-opacity:0;
-}
-}
-
-@keyframes fade{
-from{opacity:0;}
-to{opacity:1;}
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<h1>💖 سالگرد ازدواج مبارک 💖</h1>
+<div class="container">
+
+<h1>💖 سالگرد ازدواجمان مبارک 💖</h1>
 
 <h2>حسین ❤️ محدثه</h2>
 
-<img src="family.jpg">
+<img src="family.jpg" alt="حسین و محدثه">
 
 <p>
 
 محدثه جان...
 
+<br><br>
+
 امروز فقط یک روز در تقویم نیست...
 
-امروز سالگرد زیباترین اتفاق زندگی من است.
+<br><br>
 
-از اینکه همسر و همراه زندگی من شدی،
-از صمیم قلب خدا را شکر می‌کنم.
+امروز سالگرد روزی است که خدا زیباترین هدیه زندگی‌ام را به من داد.
 
-دوستت دارم...
+<br><br>
 
-تا همیشه...
+از اینکه همسر، دوست، همدم و آرامش قلب من شدی،
+بی‌نهایت سپاسگزارم.
 
-❤️
+<br><br>
+
+هر لحظه کنار تو، برای من ارزشمندترین خاطره زندگی است.
+
+<br><br>
+
+از خدا می‌خواهم تا همیشه کنار هم،
+در آرامش، عشق و سلامتی زندگی کنیم.
+
+<br><br>
+
+❤️ دوستت دارم...
+
+امروز...
+
+فردا...
+
+و تا همیشه... ❤️
 
 </p>
 
+<h2 id="timer"></h2>
+
 <button onclick="love()">
 
-دوستت دارم ❤️
+❤️ دوستت دارم ❤️
 
 </button>
 
+</div>
+
 <script>
 
-function love(){
+const weddingDate = new Date("2020-08-07");
 
-alert("سالگرد ازدواجمان مبارک عشق زندگیم ❤️");
+function updateTimer(){
 
-}
+const now = new Date();
 
-for(let i=0;i<40;i++){
+const diff = now - weddingDate;
 
-let h=document.createElement("div");
+const days = Math.floor(diff / (1000*60*60*24));
 
-h.id="heart";
-
-h.innerHTML="❤️";
-
-h.style.left=Math.random()*100+"vw";
-
-h.style.animationDuration=(3+Math.random()*5)+"s";
-
-h.style.fontSize=(20+Math.random()*30)+"px";
-
-document.body.appendChild(h);
+document.getElementById("timer").innerHTML =
+"💍 " + days + " روز از آغاز زندگی عاشقانه ما گذشته است 💍";
 
 }
+
+setInterval(updateTimer,1000);
+
+updateTimer();
 
 </script>
+
+<script src="script.js"></script>
 
 </body>
 
