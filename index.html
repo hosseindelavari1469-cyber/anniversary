@@ -21,11 +21,25 @@
 
 <body>
 
-<!-- صفحه شروع -->
+<!-- صفحه ورود -->
 
-<div id="welcome">
+<div id="welcome" class="welcome">
 
-<div class="welcome-box">
+<div class="welcome-card">
+
+<h1>
+
+سالگرد ازدواجمان مبارک
+
+❤️
+
+</h1>
+
+<p>
+
+لطفاً روی قلب ضربه بزنید
+
+</p>
 
 <div id="heartButton">
 
@@ -33,132 +47,112 @@
 
 </div>
 
-<h1>
-
-محدثه جان...
-
-</h1>
-
-<p>
-
-یک هدیه کوچک برای تو آماده کرده‌ام
-
-</p>
-
-<span>
-
-لطفاً روی قلب ضربه بزن
-
-</span>
-
 </div>
 
 </div>
 
-<!-- صفحه اصلی -->
+<!-- موسیقی -->
 
-<div id="mainContent">
+<audio id="music" loop>
 
-<div class="background-stars"></div>
+<source src="music/music.mp3" type="audio/mpeg">
+
+</audio>
+
+<!-- گلبرگ ها -->
 
 <div id="petals"></div>
+
+<!-- محتوای اصلی -->
+
+<div id="mainContent">
 
 <header>
 
 <h1>
 
-💖 سالگرد ازدواجمان مبارک 💖
+❤️
+
+حسین & محدثه
+
+❤️
 
 </h1>
 
 <h2>
 
-حسین ❤️ محدثه
+سالگرد ازدواجمان مبارک
 
 </h2>
 
 </header>
 
-<section class="photo-box">
+<section class="glass photo-box">
 
-<img src="family.jpg" alt="Hossein & Mohadeseh">
+<img src="images/photo.jpg" alt="Hossein & Mohadeseh">
+
+</section>
+<section class="glass message-card">
+
+<h2>💌 نامه‌ای برای محدثه 💌</h2>
+
+<div id="typedText"></div>
 
 </section>
 
-<section class="love-text">
+<section class="glass counter">
 
-<div id="typedText">
+<h3>⏳ مدت زمانی که کنار هم هستیم</h3>
 
-</div>
+<div id="timer"></div>
 
-</section>
-
-<section class="counter">
-
-<h3>
-
-از آغاز زندگی مشترکمان گذشته است
-
-</h3>
-
-<div id="timer">
-
-در حال محاسبه...
-
-</div>
+<div id="loveCounter"></div>
 
 </section>
 
-<section class="music">
+<section class="glass gallery">
 
-<button id="playBtn">
+<h3>❤️ عشق ما ❤️</h3>
 
-🎵 پخش موسیقی
+<p>
 
-</button>
-<section class="message-card">
+از ۱۷ مرداد ۱۳۹۹...
 
-<h2>
+سفر عاشقانه ما آغاز شد.
 
-💌 نامه‌ای برای عشق زندگی‌ام
+هر روز کنار تو برای من یک هدیه از طرف خدا بوده است.
 
-</h2>
+امیدوارم تا آخرین لحظه زندگی،
 
-<p id="message">
+در کنار هم،
 
-محدثه جان...
+با عشق،
 
-<br><br>
+با آرامش،
 
-امروز فقط سالگرد ازدواجمان نیست...
+و با لبخند زندگی کنیم.
 
-<br><br>
+</p>
 
-سالگرد شروع زیباترین فصل زندگی من است.
+</section>
 
-<br><br>
+<section class="glass final-message">
 
-از روزی که وارد زندگی‌ام شدی،
+<h2>🌹 محدثه جان 🌹</h2>
 
-هر روز دلیل تازه‌ای برای لبخند زدن پیدا کردم.
+<p>
 
-<br><br>
+تو بهترین اتفاق زندگی من هستی...
 
-ممنونم که همدم، همراز و آرامش قلب من شدی.
+هر وقت به چشمانت نگاه می‌کنم،
 
-<br><br>
+می‌فهمم که عشق واقعی یعنی چه...
 
-بودنت بزرگ‌ترین هدیه خدا برای من است.
-
-<br><br>
+سالگرد ازدواجمان مبارک.
 
 دوستت دارم...
 
-امروز...
-
-فردا...
-
-و تا آخرین نفس...
+تا همیشه...
 
 ❤️
 
@@ -166,267 +160,70 @@
 
 </section>
 
-<section class="gallery">
+<section class="glass music-box">
 
-<div class="glass">
+<button id="playBtn">
 
-<h3>
+🎵 توقف / پخش موسیقی
 
-❤️ همیشه کنار هم ❤️
-
-</h3>
-
-<p>
-
-هر لحظه کنار تو،
-
-برای من یک خاطره‌ی شیرین است.
-
-</p>
-
-</div>
+</button>
 
 </section>
-
-<section class="count-love">
-
-<div class="glass">
-
-<h3>
-
-⏳ مدت عشق ما
-
-</h3>
-
-<div id="loveCounter">
-
-در حال محاسبه...
-
-</div>
-
-</div>
-
-</section>
-<section class="final-message">
-
-<div class="glass">
-
-<h2>
-
-🌹 برای همیشه...
-
-</h2>
-
-<p>
-
-اگر دوباره متولد شوم...
-
-باز هم تو را انتخاب می‌کنم...
-
-باز هم عاشقت می‌شوم...
-
-و باز هم از خدا می‌خواهم
-
-که همسر من باشی.
-
-<br><br>
-
-محدثه جان...
-
-تو فقط همسر من نیستی...
-
-تو آرامش قلب منی...
-
-بهترین دوست منی...
-
-و زیباترین اتفاق زندگی منی...
-
-</p>
-
-</div>
-
-</section>
-
-<section class="footer-love">
+<footer class="footer-love">
 
 <h2>
 
 ❤️
 
-سالگرد ازدواجمان مبارک
+تا وقتی قلبم می‌تپد...
 
 ❤️
 
 </h2>
 
+<p>
+
+تو زیباترین اتفاق زندگی من هستی...
+
+از خدا ممنونم که تو را به من هدیه داد.
+
+هر سال که کنار تو می‌گذرد،
+
+بیشتر از قبل عاشقت می‌شوم.
+
+</p>
+
 <h3>
 
-با تمام عشق...
+با تمام وجود...
 
-حسین
+دوستت دارم
+
+محدثه جان
+
+❤️ حسین ❤️
 
 </h3>
 
-</section>
+</footer>
 
 </div>
 
-<audio id="music">
+<!-- دکمه بازگشت به بالا -->
 
-<source src="music.mp3" type="audio/mpeg">
+<button id="topButton">
 
-مرورگر شما از پخش موسیقی پشتیبانی نمی‌کند.
+⬆️
 
-</audio>
-<script>
+</button>
 
-const weddingDate = new Date("2020-08-07T00:00:00");
-
-function updateTimer(){
-
-const now = new Date();
-
-const diff = now - weddingDate;
-
-const totalSeconds = Math.floor(diff / 1000);
-
-const days = Math.floor(totalSeconds / 86400);
-
-const hours = Math.floor((totalSeconds % 86400) / 3600);
-
-const minutes = Math.floor((totalSeconds % 3600) / 60);
-
-const seconds = totalSeconds % 60;
-
-document.getElementById("timer").innerHTML =
-
-days + " روز " +
-
-hours + " ساعت " +
-
-minutes + " دقیقه " +
-
-seconds + " ثانیه";
-
-const years = Math.floor(days / 365);
-
-const remainDays = days % 365;
-
-document.getElementById("loveCounter").innerHTML =
-
-years + " سال و " +
-
-remainDays + " روز کنار هم ❤️";
-
-}
-
-setInterval(updateTimer,1000);
-
-updateTimer();
-
-const welcome = document.getElementById("welcome");
-
-const mainContent = document.getElementById("mainContent");
-
-const heartButton = document.getElementById("heartButton");
-
-const music = document.getElementById("music");
-
-const playBtn = document.getElementById("playBtn");
-  heartButton.addEventListener("click",function(){
-
-heartButton.style.transform="scale(1.3)";
-
-setTimeout(function(){
-
-welcome.classList.add("fadeOut");
-
-music.play();
-
-setTimeout(function(){
-
-welcome.style.display="none";
-
-mainContent.style.display="block";
-
-document.body.classList.add("showMain");
-
-},1000);
-
-},300);
-
-});
-
-playBtn.addEventListener("click",function(){
-
-if(music.paused){
-
-music.play();
-
-playBtn.innerHTML="⏸ توقف موسیقی";
-
-}else{
-
-music.pause();
-
-playBtn.innerHTML="🎵 پخش موسیقی";
-
-}
-
-});
-
-const text=`
-
-محدثه جان...
-
-امروز فقط سالگرد ازدواجمان نیست...
-
-سالگرد شروع قشنگ‌ترین فصل زندگی من است.
-
-از اینکه کنار من ماندی...
-
-در شادی‌ها...
-
-در سختی‌ها...
-
-و همیشه همراهم بودی...
-
-از صمیم قلب از تو ممنونم.
-
-امیدوارم تا آخرین نفس...
-
-دست در دست هم...
-
-با عشق...
-
-کنار هم زندگی کنیم.
-
-سالگرد ازدواجمان مبارک عشق همیشگی من ❤️
-
-`;
-
-let i=0;
-
-function typeWriter(){
-
-if(i<text.length){
-
-document.getElementById("typedText").innerHTML+=text.charAt(i);
-
-i++;
-
-setTimeout(typeWriter,55);
-
-}
-
-}
-</section>
-  typeWriter();
-
-</script>
+<!-- فایل جاوااسکریپت -->
 
 <script src="script.js"></script>
 
 </body>
 
 </html>
+
+
+
