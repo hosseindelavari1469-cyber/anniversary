@@ -1,81 +1,154 @@
 // ===============================
 // Love Story
 // Hossein ❤️ Mohadeseh
-// Version 2.0
 // ===============================
 
+// عناصر صفحه
 const welcome = document.getElementById("welcome");
-
+const heartButton = document.getElementById("heartButton");
 const mainContent = document.getElementById("mainContent");
 
-const heartButton = document.getElementById("heartButton");
-
 const music = document.getElementById("music");
-
 const playBtn = document.getElementById("playBtn");
 
 const typedText = document.getElementById("typedText");
 
-const petals = document.getElementById("petals");
+const topButton = document.getElementById("topButton");
 
+// تاریخ ازدواج
 const weddingDate = new Date("2020-08-07T00:00:00");
+
+// متن عاشقانه
+const message = `
+
+محدثه جان...
+
+امروز فقط سالگرد ازدواجمان نیست...
+
+امروز سالگرد شروع زیباترین اتفاق زندگی من است.
+
+از روزی که کنارم آمدی،
+
+خانه‌ام گرم‌تر شد،
+
+قلبم آرام‌تر شد،
+
+و زندگی برایم معنا پیدا کرد.
+
+ممنونم که همیشه همراهم بودی...
+
+در شادی‌ها...
+
+در سختی‌ها...
+
+در تمام لحظه‌های زندگی...
+
+امیدوارم تا آخرین نفس،
+
+دست در دست هم،
+
+کنار هم،
+
+با عشق زندگی کنیم...
+
+سالگرد ازدواجمان مبارک ❤️
+
+دوستت دارم...
+
+تا همیشه...
+
+❤️ حسین ❤️
+
+`;
 
 // ===============================
 // ورود به سایت
 // ===============================
 
-heartButton.addEventListener("click", () => {
+heartButton.addEventListener("click", async () => {
 
-    heartButton.style.transform = "scale(1.3)";
+    heartButton.style.pointerEvents = "none";
 
-    setTimeout(() => {
+    welcome.classList.add("fadeOut");
 
-        welcome.classList.add("fadeOut");
+    try{
+        await music.play();
+    }catch(e){
+        console.log("Music blocked.");
+    }
 
-        music.play();
+    setTimeout(()=>{
 
-        setTimeout(() => {
+        welcome.style.display="none";
 
-            welcome.style.display = "none";
+        mainContent.style.display="block";
 
-            mainContent.style.display = "block";
+        startTyping();
 
-            startTyping();
+        startTimer();
 
-            startPetals();
+        startHearts();
 
-            startHearts();
-
-        },1000);
-
-    },300);
+    },900);
 
 });
 // ===============================
-// کنترل موسیقی
+// افکت تایپ شدن متن
 // ===============================
 
-playBtn.addEventListener("click", () => {
+let index = 0;
+let typingStarted = false;
 
-    if (music.paused) {
+function startTyping() {
 
-        music.play();
+    if (typingStarted) return;
 
-        playBtn.innerHTML = "⏸ توقف موسیقی";
+    typingStarted = true;
+
+    typedText.innerHTML = "";
+
+    typeWriter();
+
+}
+
+function typeWriter() {
+
+    if (index < message.length) {
+
+        typedText.innerHTML += message.charAt(index);
+
+        index++;
+
+        typedText.scrollTop = typedText.scrollHeight;
+
+        setTimeout(typeWriter, 45);
 
     } else {
 
-        music.pause();
-
-        playBtn.innerHTML = "🎵 پخش موسیقی";
+        typedText.innerHTML +=
+        "<br><br><h2 style='text-align:center;color:#ffd700;'>❤️ دوستت دارم تا همیشه ❤️</h2>";
 
     }
 
-});
+}
 
 // ===============================
-// تایمر ازدواج
+// شمارنده سالگرد
 // ===============================
+
+let timerStarted = false;
+
+function startTimer() {
+
+    if (timerStarted) return;
+
+    timerStarted = true;
+
+    updateTimer();
+
+    setInterval(updateTimer, 1000);
+
+}
 
 function updateTimer() {
 
@@ -101,118 +174,39 @@ function updateTimer() {
         `${days} روز ${hours} ساعت ${minutes} دقیقه ${seconds} ثانیه`;
 
     document.getElementById("loveCounter").innerHTML =
-        `${years} سال و ${remainDays} روز کنار هم ❤️`;
+        `${years} سال و ${remainDays} روز عاشقانه کنار هم ❤️`;
 
 }
 
-setInterval(updateTimer, 1000);
-
-updateTimer();
 // ===============================
-// متن تایپ شونده
+// کنترل موسیقی
 // ===============================
 
-const message = `
+playBtn.addEventListener("click", () => {
 
-محدثه جان...
+    if (music.paused) {
 
-امروز فقط سالگرد ازدواجمان نیست...
-
-سالگرد شروع زیباترین فصل زندگی من است.
-
-از روزی که وارد زندگی من شدی،
-هر روز دلیل تازه‌ای برای لبخند زدن پیدا کردم.
-
-ممنونم که همیشه همراهم بودی...
-
-در شادی‌ها...
-
-در سختی‌ها...
-
-و در تمام لحظه‌های زندگی...
-
-امیدوارم تا آخرین نفس،
-دست در دست هم،
-کنار هم،
-با عشق زندگی کنیم...
-
-سالگرد ازدواجمان مبارک ❤️
-
-دوستت دارم...
-تا همیشه...
-
-❤️ حسین ❤️
-
-`;
-
-let index = 0;
-
-function startTyping() {
-
-    typedText.innerHTML = "";
-
-    index = 0;
-
-    typeWriter();
-
-}
-
-function typeWriter() {
-
-    if (index < message.length) {
-
-        typedText.innerHTML += message.charAt(index);
-
-        index++;
-
-        typedText.scrollTop = typedText.scrollHeight;
-
-        setTimeout(typeWriter, 45);
+        music.play();
 
     } else {
 
-        typedText.innerHTML +=
-        "<br><br><h2 style='color:#ffd700'>💖 دوستت دارم 💖</h2>";
+        music.pause();
 
     }
 
-}
-// ===============================
-// بارش گلبرگ رز
-// ===============================
+});
 
-function createPetal() {
+music.addEventListener("play", () => {
 
-    const petal = document.createElement("div");
+    playBtn.textContent = "⏸ توقف موسیقی";
 
-    petal.className = "petal";
+});
 
-    petal.innerHTML = "🌹";
+music.addEventListener("pause", () => {
 
-    petal.style.left = Math.random() * 100 + "vw";
+    playBtn.textContent = "🎵 پخش موسیقی";
 
-    petal.style.fontSize = (18 + Math.random() * 18) + "px";
-
-    petal.style.animationDuration = (6 + Math.random() * 5) + "s";
-
-    petal.style.opacity = 0.4 + Math.random() * 0.6;
-
-    petals.appendChild(petal);
-
-    petal.addEventListener("animationend", () => {
-
-        petal.remove();
-
-    });
-
-}
-
-function startPetals() {
-
-    setInterval(createPetal, 700);
-
-}
-
+});
 // ===============================
 // قلب‌های شناور
 // ===============================
@@ -221,163 +215,35 @@ function createHeart() {
 
     const heart = document.createElement("div");
 
-    heart.innerHTML = "❤️";
+    heart.className = "floating-heart";
 
-    heart.style.position = "fixed";
+    heart.innerHTML = "❤️";
 
     heart.style.left = Math.random() * 100 + "vw";
 
-    heart.style.top = "-40px";
+    heart.style.fontSize = (16 + Math.random() * 18) + "px";
 
-    heart.style.fontSize = (16 + Math.random() * 20) + "px";
-
-    heart.style.pointerEvents = "none";
-
-    heart.style.zIndex = "999";
-
-    heart.style.opacity = "0.85";
+    heart.style.animationDuration = (5 + Math.random() * 4) + "s";
 
     document.body.appendChild(heart);
 
-    let y = -40;
+    heart.addEventListener("animationend", () => {
 
-    const speed = 2 + Math.random() * 2;
+        heart.remove();
 
-    const move = setInterval(() => {
-
-        y += speed;
-
-        heart.style.top = y + "px";
-
-        if (y > window.innerHeight + 50) {
-
-            clearInterval(move);
-
-            heart.remove();
-
-        }
-
-    }, 20);
+    });
 
 }
 
 function startHearts() {
 
-    setInterval(createHeart, 900);
-
-}
-// ===============================
-// ظاهر شدن بخش‌ها هنگام اسکرول
-// ===============================
-
-const sections = document.querySelectorAll(
-".message-card,.gallery,.count-love,.final-message,.photo-box,.counter"
-);
-
-const observer = new IntersectionObserver((entries)=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-entry.target.style.opacity="1";
-
-entry.target.style.transform="translateY(0)";
+    setInterval(createHeart, 700);
 
 }
 
-});
-
-},{
-threshold:0.2
-});
-
-sections.forEach(section=>{
-
-section.style.opacity="0";
-
-section.style.transform="translateY(60px)";
-
-section.style.transition="all 1s ease";
-
-observer.observe(section);
-
-});
-
-// ===============================
-// بزرگ شدن عکس
-// ===============================
-
-const photo=document.querySelector(".photo-box img");
-
-photo.style.cursor="pointer";
-
-photo.addEventListener("click",()=>{
-
-if(photo.classList.contains("zoom")){
-
-photo.classList.remove("zoom");
-
-document.body.style.overflow="auto";
-
-}else{
-
-photo.classList.add("zoom");
-
-document.body.style.overflow="hidden";
-
-}
-
-});
-
-// ===============================
-// تغییر متن دکمه موسیقی
-// ===============================
-
-music.addEventListener("ended",()=>{
-
-playBtn.innerHTML="🎵 پخش دوباره موسیقی";
-
-});
-
-music.addEventListener("play",()=>{
-
-playBtn.innerHTML="⏸ توقف موسیقی";
-
-});
-
-music.addEventListener("pause",()=>{
-
-playBtn.innerHTML="🎵 پخش موسیقی";
-
-});
 // ===============================
 // دکمه بازگشت به بالا
 // ===============================
-
-const topButton = document.createElement("button");
-
-topButton.id = "topButton";
-
-topButton.innerHTML = "⬆️";
-
-document.body.appendChild(topButton);
-
-topButton.style.position = "fixed";
-topButton.style.bottom = "25px";
-topButton.style.left = "25px";
-topButton.style.width = "55px";
-topButton.style.height = "55px";
-topButton.style.border = "none";
-topButton.style.borderRadius = "50%";
-topButton.style.background = "#ff3366";
-topButton.style.color = "#fff";
-topButton.style.fontSize = "24px";
-topButton.style.cursor = "pointer";
-topButton.style.display = "none";
-topButton.style.zIndex = "99999";
-topButton.style.boxShadow = "0 0 20px rgba(255,0,80,.5)";
-topButton.style.transition = ".3s";
 
 window.addEventListener("scroll", () => {
 
@@ -406,121 +272,66 @@ topButton.addEventListener("click", () => {
 });
 
 // ===============================
-// درخشش آرام قلب صفحه اول
+// بزرگ شدن عکس
 // ===============================
 
-setInterval(() => {
+const photo = document.querySelector(".photo-box img");
 
-    if (welcome.style.display !== "none") {
+photo.addEventListener("click", () => {
 
-        heartButton.style.filter =
-            "drop-shadow(0 0 15px red) drop-shadow(0 0 35px #ff3366)";
+    photo.classList.toggle("zoom");
 
-        setTimeout(() => {
+    if (photo.classList.contains("zoom")) {
 
-            heartButton.style.filter =
-                "drop-shadow(0 0 20px red)";
+        document.body.style.overflow = "hidden";
 
-        }, 500);
+    } else {
+
+        document.body.style.overflow = "auto";
 
     }
 
-}, 2500);
-
-// ===============================
-// جلوگیری از انتخاب متن
-// ===============================
-
-document.addEventListener("selectstart", (e) => {
-
-    e.preventDefault();
-
-});
-// ===============================
-// افکت نور روی دکمه‌ها
-// ===============================
-
-const buttons = document.querySelectorAll("button");
-
-buttons.forEach(button => {
-
-    button.addEventListener("mouseenter", () => {
-
-        button.style.transform = "scale(1.08)";
-
-        button.style.boxShadow = "0 0 35px rgba(255,0,80,.9)";
-
-    });
-
-    button.addEventListener("mouseleave", () => {
-
-        button.style.transform = "scale(1)";
-
-        button.style.boxShadow = "0 0 20px rgba(255,0,80,.5)";
-
-    });
-
 });
 
 // ===============================
-// افکت حرکت آرام عکس
+// نمایش آرام بخش‌ها
 // ===============================
 
-const photoBox = document.querySelector(".photo-box img");
+const sections = document.querySelectorAll(".glass,.footer-love");
 
-let photoScale = 1;
+const observer = new IntersectionObserver((entries) => {
 
-setInterval(() => {
+    entries.forEach(entry => {
 
-    if (!photoBox.classList.contains("zoom")) {
+        if (entry.isIntersecting) {
 
-        photoScale = photoScale === 1 ? 1.02 : 1;
+            entry.target.style.opacity = "1";
 
-        photoBox.style.transform = `scale(${photoScale})`;
-
-    }
-
-}, 2500);
-
-// ===============================
-// نمایش آرام صفحه اصلی
-// ===============================
-
-window.addEventListener("load", () => {
-
-    document.body.style.opacity = "1";
-
-});
-
-// ===============================
-// پیام کنسول ❤️
-// ===============================
-
-console.log("%c❤️ سالگرد ازدواج حسین و محدثه ❤️",
-"color:#ff3366;font-size:22px;font-weight:bold;");
-
-console.log("%cMade with Love",
-"color:#ffd700;font-size:16px;");
-// ===============================
-// بهینه سازی نهایی
-// ===============================
-
-window.addEventListener("resize", () => {
-
-    document.querySelectorAll(".petal").forEach(petal => {
-
-        if (petal.getBoundingClientRect().top > window.innerHeight) {
-
-            petal.remove();
+            entry.target.style.transform = "translateY(0)";
 
         }
 
     });
 
+}, {
+
+    threshold:0.15
+
 });
 
+sections.forEach(section => {
+
+    section.style.opacity = "0";
+
+    section.style.transform = "translateY(50px)";
+
+    section.style.transition = "all .8s ease";
+
+    observer.observe(section);
+
+});
 // ===============================
-// مدیریت خطای پخش موسیقی
+// مدیریت خطای موسیقی
 // ===============================
 
 music.addEventListener("error", () => {
@@ -529,41 +340,47 @@ music.addEventListener("error", () => {
 
 });
 
-// ===============================
-// پایان انیمیشن تایپ
-// ===============================
+// اگر کاربر از صفحه خارج شد، اسکرول برگردد
+window.addEventListener("beforeunload", () => {
 
-function finishAnimation() {
+    window.scrollTo(0, 0);
 
-    typedText.style.textShadow = "0 0 20px rgba(255,255,255,.8)";
+});
 
-    setTimeout(() => {
+// جلوگیری از انتخاب متن
+document.addEventListener("selectstart", (e) => {
 
-        typedText.style.textShadow = "none";
+    e.preventDefault();
 
-    },1500);
+});
+
+// جلوگیری از کشیدن عکس
+if (photo) {
+
+    photo.addEventListener("dragstart", (e) => {
+
+        e.preventDefault();
+
+    });
 
 }
 
-const oldTypeWriter = typeWriter;
+// وقتی موسیقی تمام شد از اول شروع شود
+music.addEventListener("ended", () => {
 
-typeWriter = function(){
+    music.currentTime = 0;
 
-    if(index < message.length){
+    music.play();
 
-        oldTypeWriter();
+});
 
-    }else{
+// پیام کنسول
+console.log("%c❤️ سالگرد ازدواج حسین و محدثه ❤️",
+"color:#ff3366;font-size:22px;font-weight:bold;");
 
-        finishAnimation();
-
-    }
-
-};
+console.log("%cMade with Love",
+"color:#ffd700;font-size:16px;");
 
 // ===============================
-// نسخه پروژه
+// پایان پروژه
 // ===============================
-
-console.log("Love Story v2.0");
-console.log("Created for Hossein ❤️ Mohadeseh");
