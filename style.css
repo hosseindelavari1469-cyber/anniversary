@@ -1,1843 +1,602 @@
+/* ===========================
+   Love Story
+   Hossein ❤️ Mohadeseh
+   =========================== */
+
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html{
-
-scroll-behavior:smooth;
-
+    scroll-behavior:smooth;
 }
 
 body{
-
-font-family:'Vazirmatn',sans-serif;
-
-background:#050505;
-
-overflow-x:hidden;
-
-color:white;
-
-min-height:100vh;
-
+    font-family:"Vazirmatn",sans-serif;
+    direction:rtl;
+    overflow-x:hidden;
+    background:linear-gradient(180deg,#0f172a,#1e293b,#111827);
+    color:#fff;
+    min-height:100vh;
 }
+
+/* پس زمینه ستاره ای */
 
 body::before{
-
-content:"";
-
-position:fixed;
-
-left:0;
-
-top:0;
-
-width:100%;
-
-height:100%;
-
-background:radial-gradient(circle at top,#401010,#050505 70%);
-
-z-index:-3;
-
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+    radial-gradient(white 1px,transparent 1px),
+    radial-gradient(rgba(255,255,255,.5) 1px,transparent 1px);
+    background-size:60px 60px,120px 120px;
+    background-position:0 0,30px 30px;
+    opacity:.18;
+    z-index:-2;
 }
 
-#mainContent{
+/* لایه گلبرگ */
 
-display:none;
-
-animation:fadeIn 2s;
-
-padding-bottom:100px;
-
+#petals{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:1;
 }
 
-#welcome{
+/* صفحه ورود */
 
-position:fixed;
-
-left:0;
-
-top:0;
-
-width:100%;
-
-height:100%;
-
-background:#000;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-z-index:999999;
-
-transition:1s;
-
+.welcome{
+    position:fixed;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#111827,#7f1d1d,#111827);
+    z-index:9999;
+    transition:1s;
 }
 
 .fadeOut{
-
-opacity:0;
-
-visibility:hidden;
-
+    opacity:0;
+    visibility:hidden;
 }
 
-.welcome-box{
+.welcome-card{
+    width:90%;
+    max-width:420px;
+    text-align:center;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.15);
+    backdrop-filter:blur(15px);
+    border-radius:25px;
+    padding:40px 25px;
+}
 
-text-align:center;
+.welcome-card h1{
+    font-size:34px;
+    margin-bottom:20px;
+}
 
+.welcome-card p{
+    font-size:18px;
+    color:#ffe4e6;
 }
 
 #heartButton{
-
-font-size:130px;
-
-cursor:pointer;
-
-animation:beat 1.1s infinite;
-
-user-select:none;
-
-transition:.5s;
-
-filter:drop-shadow(0 0 20px red);
-
+    margin-top:35px;
+    font-size:90px;
+    cursor:pointer;
+    animation:pulse 1.4s infinite;
+    transition:.3s;
+    user-select:none;
 }
 
 #heartButton:hover{
+    transform:scale(1.15);
+}
 
-transform:scale(1.2);
+@keyframes pulse{
+
+0%{transform:scale(1);}
+
+50%{transform:scale(1.15);}
+
+100%{transform:scale(1);}
 
 }
 
-.welcome-box h1{
+/* محتوای اصلی */
 
-margin-top:25px;
-
-font-size:42px;
-
-}
-
-.welcome-box p{
-
-margin-top:20px;
-
-font-size:24px;
-
-color:#ffdede;
-
-}
-
-.welcome-box span{
-
-display:block;
-
-margin-top:25px;
-
-font-size:18px;
-
-opacity:.8;
-
-animation:blink 2s infinite;
-
-}
-.background-stars{
-
-position:fixed;
-
-left:0;
-
-top:0;
-
-width:100%;
-
-height:100%;
-
-pointer-events:none;
-
-overflow:hidden;
-
-z-index:-2;
-
-}
-
-.background-stars::before{
-
-content:"";
-
-position:absolute;
-
-width:3px;
-
-height:3px;
-
-background:white;
-
-border-radius:50%;
-
-box-shadow:
-
-80px 50px #fff,
-200px 150px #fff,
-350px 80px #fff,
-500px 220px #fff,
-650px 100px #fff,
-800px 180px #fff,
-1000px 120px #fff,
-1200px 260px #fff,
-150px 300px #fff,
-400px 450px #fff,
-700px 500px #fff,
-900px 350px #fff,
-1100px 420px #fff,
-1300px 180px #fff,
-1450px 520px #fff;
-
-animation:starsMove 20s linear infinite;
-
-opacity:.8;
-
+#mainContent{
+    display:none;
+    padding:30px 15px 80px;
 }
 
 header{
-
-text-align:center;
-
-padding:60px 20px 20px;
-
+    text-align:center;
+    margin-bottom:40px;
 }
 
 header h1{
-
-font-size:48px;
-
-color:#ffd700;
-
-text-shadow:0 0 20px rgba(255,215,0,.5);
-
-margin-bottom:20px;
-
+    font-size:42px;
+    color:#ffb3c7;
 }
 
 header h2{
+    margin-top:12px;
+    font-size:24px;
+    color:#fff5f7;
+}
+/* ===========================
+   کارت‌های شیشه‌ای
+   =========================== */
 
-font-size:30px;
+.glass{
 
-font-weight:400;
+    width:95%;
+    max-width:900px;
 
-color:#fff;
+    margin:25px auto;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:24px;
+
+    padding:30px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
 
 }
 
+/* ===========================
+   عکس
+   =========================== */
+
 .photo-box{
 
-display:flex;
-
-justify-content:center;
-
-margin-top:40px;
+    text-align:center;
 
 }
 
 .photo-box img{
 
-width:320px;
+    width:320px;
+    max-width:100%;
 
-max-width:90%;
+    border-radius:22px;
 
-border-radius:25px;
+    border:5px solid rgba(255,255,255,.15);
 
-border:5px solid rgba(255,255,255,.15);
+    transition:.5s;
 
-box-shadow:0 0 40px rgba(255,0,70,.35);
+    cursor:pointer;
 
-transition:.5s;
+    box-shadow:0 0 30px rgba(255,80,120,.35);
 
 }
 
 .photo-box img:hover{
 
-transform:scale(1.03);
-
-box-shadow:0 0 60px rgba(255,0,80,.55);
-
-}
-.love-text{
-
-width:90%;
-
-max-width:900px;
-
-margin:50px auto;
+    transform:scale(1.05);
 
 }
 
-.message-card,
-.glass{
+.photo-box img.zoom{
 
-background:rgba(255,255,255,.08);
+    position:fixed;
 
-backdrop-filter:blur(18px);
+    top:50%;
 
--webkit-backdrop-filter:blur(18px);
+    left:50%;
 
-border:1px solid rgba(255,255,255,.15);
+    transform:translate(-50%,-50%) scale(1.35);
 
-border-radius:25px;
+    width:70%;
 
-padding:35px;
+    max-width:750px;
 
-box-shadow:0 8px 40px rgba(0,0,0,.35);
+    z-index:99999;
 
-margin-bottom:35px;
+    border-radius:25px;
 
-transition:.4s;
-
-}
-
-.message-card:hover,
-.glass:hover{
-
-transform:translateY(-6px);
-
-box-shadow:0 15px 50px rgba(255,0,80,.25);
+    box-shadow:0 0 60px rgba(0,0,0,.9);
 
 }
 
-.message-card h2{
+/* ===========================
+   متن
+   =========================== */
 
-text-align:center;
+.message-card h2,
+.counter h3,
+.gallery h3,
+.final-message h2{
 
-font-size:34px;
+    text-align:center;
 
-margin-bottom:25px;
+    margin-bottom:20px;
 
-color:#ffd700;
-
-}
-
-#typedText,
-#message{
-
-font-size:22px;
-
-line-height:2.3;
-
-text-align:center;
-
-white-space:pre-wrap;
-
-color:#ffffff;
+    color:#ffd5df;
 
 }
 
-.counter{
+#typedText{
 
-text-align:center;
+    white-space:pre-wrap;
 
-margin:50px auto;
+    line-height:2.2;
 
-}
+    font-size:19px;
 
-.counter h3{
+    color:#ffffff;
 
-font-size:30px;
-
-margin-bottom:25px;
-
-color:#ffd700;
+    min-height:220px;
 
 }
 
-#timer{
+.gallery p,
+.final-message p{
 
-font-size:28px;
+    line-height:2.2;
 
-font-weight:bold;
+    font-size:18px;
 
-color:#ffb3b3;
-
-text-shadow:0 0 10px rgba(255,80,80,.5);
+    text-align:center;
 
 }
-.music{
 
-display:flex;
+/* ===========================
+   تایمر
+   =========================== */
 
-justify-content:center;
+#timer,
+#loveCounter{
 
-margin:40px 0;
+    text-align:center;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    margin-top:18px;
+
+    color:#ffe082;
+
+}
+
+/* ===========================
+   دکمه موسیقی
+   =========================== */
+
+.music-box{
+
+    text-align:center;
 
 }
 
 #playBtn{
 
-background:linear-gradient(135deg,#ff3b6b,#ff004c);
+    border:none;
 
-color:white;
+    background:#ff3366;
 
-border:none;
+    color:#fff;
 
-padding:18px 40px;
+    padding:15px 35px;
 
-font-size:22px;
+    border-radius:50px;
 
-border-radius:60px;
+    font-size:18px;
 
-cursor:pointer;
+    cursor:pointer;
 
-transition:.4s;
+    transition:.3s;
 
-box-shadow:0 0 25px rgba(255,0,80,.45);
-
-font-family:'Vazirmatn',sans-serif;
+    box-shadow:0 0 20px rgba(255,51,102,.45);
 
 }
 
 #playBtn:hover{
 
-transform:scale(1.08);
+    transform:scale(1.08);
 
-box-shadow:0 0 40px rgba(255,0,80,.8);
-
-}
-
-.gallery{
-
-width:90%;
-
-max-width:900px;
-
-margin:0 auto;
+    box-shadow:0 0 35px rgba(255,51,102,.8);
 
 }
-
-.gallery h3{
-
-text-align:center;
-
-font-size:30px;
-
-margin-bottom:20px;
-
-color:#ffd700;
-
-}
-
-.gallery p{
-
-text-align:center;
-
-font-size:22px;
-
-line-height:2;
-
-}
-
-.count-love{
-
-width:90%;
-
-max-width:900px;
-
-margin:40px auto;
-
-}
-
-#loveCounter{
-
-text-align:center;
-
-font-size:30px;
-
-font-weight:bold;
-
-color:#ffb6c1;
-
-margin-top:20px;
-
-}
-.final-message{
-
-width:90%;
-
-max-width:900px;
-
-margin:50px auto;
-
-}
-
-.final-message h2{
-
-text-align:center;
-
-font-size:36px;
-
-color:#ffd700;
-
-margin-bottom:25px;
-
-}
-
-.final-message p{
-
-font-size:22px;
-
-line-height:2.2;
-
-text-align:center;
-
-}
+/* ===========================
+   فوتر
+   =========================== */
 
 .footer-love{
 
-text-align:center;
+    width:95%;
+    max-width:900px;
 
-padding:80px 20px 40px;
+    margin:40px auto;
+
+    text-align:center;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:25px;
+
+    padding:40px 25px;
 
 }
 
 .footer-love h2{
 
-font-size:42px;
+    font-size:32px;
 
-color:#ff4d88;
+    color:#ffb3c7;
 
-text-shadow:0 0 20px rgba(255,0,80,.6);
+    margin-bottom:20px;
 
-margin-bottom:20px;
+}
+
+.footer-love p{
+
+    font-size:18px;
+
+    line-height:2;
+
+    margin-bottom:25px;
 
 }
 
 .footer-love h3{
 
-font-size:30px;
+    color:#ffd700;
 
-font-weight:400;
-
-color:white;
+    font-size:24px;
 
 }
 
-#petals{
+/* ===========================
+   دکمه بازگشت به بالا
+   =========================== */
 
-position:fixed;
+#topButton{
 
-left:0;
+    position:fixed;
 
-top:0;
+    bottom:25px;
 
-width:100%;
+    left:25px;
 
-height:100%;
+    width:55px;
 
-pointer-events:none;
+    height:55px;
 
-overflow:hidden;
+    border:none;
 
-z-index:5;
+    border-radius:50%;
 
-}
+    background:#ff3366;
 
-.petal{
+    color:#fff;
 
-position:fixed;
+    font-size:24px;
 
-top:-60px;
+    cursor:pointer;
 
-font-size:26px;
+    display:none;
 
-animation:fall linear forwards;
+    z-index:9999;
 
-opacity:.9;
+    box-shadow:0 0 20px rgba(255,51,102,.5);
 
-}
-@keyframes beat{
-
-0%{
-
-transform:scale(1);
+    transition:.3s;
 
 }
 
-50%{
+#topButton:hover{
 
-transform:scale(1.12);
-
-}
-
-100%{
-
-transform:scale(1);
+    transform:scale(1.12);
 
 }
 
-}
+/* ===========================
+   قلب‌های شناور
+   =========================== */
 
-@keyframes blink{
+.floating-heart{
 
-0%{
+    position:fixed;
 
-opacity:1;
+    top:-50px;
 
-}
+    font-size:22px;
 
-50%{
+    pointer-events:none;
 
-opacity:.3;
+    z-index:2;
 
-}
-
-100%{
-
-opacity:1;
-
-}
-
-}
-
-@keyframes fadeIn{
-
-from{
-
-opacity:0;
-
-transform:translateY(30px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
-
-@keyframes starsMove{
-
-0%{
-
-transform:translateY(0);
-
-}
-
-100%{
-
-transform:translateY(-120px);
-
-}
+    animation:fall linear forwards;
 
 }
 
 @keyframes fall{
 
-0%{
+    from{
 
-transform:translateY(-80px) rotate(0deg);
+        transform:translateY(-50px);
 
-opacity:1;
+        opacity:1;
+
+    }
+
+    to{
+
+        transform:translateY(110vh);
+
+        opacity:0;
+
+    }
 
 }
+/* ===========================
+   واکنش‌گرایی (Responsive)
+   =========================== */
 
-100%{
-
-transform:translateY(110vh) rotate(720deg);
-
-opacity:0;
-
-}
-
-}
-@media(max-width:900px){
+@media (max-width:768px){
 
 header h1{
-
-font-size:36px;
-
-}
-
-header h2{
-
-font-size:24px;
-
-}
-
-#heartButton{
-
-font-size:100px;
-
-}
-
-.welcome-box h1{
 
 font-size:32px;
 
 }
 
-.welcome-box p{
-
-font-size:20px;
-
-}
-
-.photo-box img{
-
-width:280px;
-
-}
-
-.message-card h2,
-
-.final-message h2,
-
-.gallery h3,
-
-.counter h3{
-
-font-size:28px;
-
-}
-
-#typedText,
-
-#message,
-
-.gallery p,
-
-.final-message p{
-
-font-size:20px;
-
-line-height:2;
-
-}
-
-#timer,
-
-#loveCounter{
-
-font-size:24px;
-
-}
-
-#playBtn{
-
-font-size:20px;
-
-padding:16px 30px;
-
-}
-
-.footer-love h2{
-
-font-size:34px;
-
-}
-
-.footer-love h3{
-
-font-size:24px;
-
-}
-
-}
-@media(max-width:600px){
-
-header{
-
-padding-top:40px;
-
-}
-
-header h1{
-
-font-size:28px;
-
-line-height:1.6;
-
-}
-
 header h2{
 
 font-size:20px;
 
 }
 
-#heartButton{
+.welcome-card h1{
 
-font-size:85px;
+font-size:28px;
 
 }
 
-.welcome-box h1{
+#heartButton{
+
+font-size:75px;
+
+}
+
+.glass{
+
+padding:20px;
+
+}
+
+.photo-box img{
+
+width:100%;
+
+}
+
+#typedText{
+
+font-size:17px;
+
+line-height:2;
+
+}
+
+.gallery p,
+.final-message p{
+
+font-size:17px;
+
+line-height:2;
+
+}
+
+#timer,
+#loveCounter{
+
+font-size:20px;
+
+}
+
+.footer-love h2{
 
 font-size:26px;
 
 }
 
-.welcome-box p{
+.footer-love h3{
+
+font-size:20px;
+
+}
+
+#playBtn{
+
+width:100%;
 
 font-size:17px;
 
 }
 
-.welcome-box span{
+}
+
+@media (max-width:480px){
+
+body{
 
 font-size:15px;
 
 }
 
-.photo-box img{
-
-width:90%;
-
-border-radius:18px;
-
-}
-
-.message-card,
-.glass{
-
-padding:20px;
-
-border-radius:18px;
-
-}
-
-.message-card h2,
-.final-message h2{
-
-font-size:24px;
-
-}
-
-#typedText,
-#message,
-.gallery p,
-.final-message p{
-
-font-size:18px;
-
-line-height:2;
-
-}
-
-.counter h3,
-.gallery h3{
-
-font-size:22px;
-
-}
-
-#timer,
-#loveCounter{
-
-font-size:20px;
-
-line-height:1.8;
-
-}
-
-#playBtn{
-
-width:90%;
-
-max-width:320px;
-
-padding:15px;
-
-font-size:18px;
-
-}
-
-.footer-love{
-
-padding:50px 15px;
-
-}
-
-.footer-love h2{
+header h1{
 
 font-size:28px;
 
 }
 
-.footer-love h3{
+header h2{
 
-font-size:20px;
-
-}
-
-}width:100%;
-
-height:100%;
-
-background:radial-gradient(circle at top,#401010,#050505 70%);
-
-z-index:-3;
+font-size:18px;
 
 }
 
-#mainContent{
+.welcome-card{
 
-display:none;
-
-animation:fadeIn 2s;
-
-padding-bottom:100px;
+padding:25px;
 
 }
 
-#welcome{
+.welcome-card p{
 
-position:fixed;
-
-left:0;
-
-top:0;
-
-width:100%;
-
-height:100%;
-
-background:#000;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-z-index:999999;
-
-transition:1s;
-
-}
-
-.fadeOut{
-
-opacity:0;
-
-visibility:hidden;
-
-}
-
-.welcome-box{
-
-text-align:center;
+font-size:16px;
 
 }
 
 #heartButton{
 
-font-size:130px;
-
-cursor:pointer;
-
-animation:beat 1.1s infinite;
-
-user-select:none;
-
-transition:.5s;
-
-filter:drop-shadow(0 0 20px red);
+font-size:65px;
 
 }
 
-#heartButton:hover{
-
-transform:scale(1.2);
-
-}
-
-.welcome-box h1{
-
-margin-top:25px;
-
-font-size:42px;
-
-}
-
-.welcome-box p{
-
-margin-top:20px;
-
-font-size:24px;
-
-color:#ffdede;
-
-}
-
-.welcome-box span{
-
-display:block;
-
-margin-top:25px;
-
-font-size:18px;
-
-opacity:.8;
-
-animation:blink 2s infinite;
-.background-stars{
-
-position:fixed;
-
-left:0;
-
-top:0;
-
-width:100%;
-
-height:100%;
-
-pointer-events:none;
-
-overflow:hidden;
-
-z-index:-2;
-
-}
-
-.background-stars::before{
-
-content:"";
-
-position:absolute;
-
-width:3px;
-
-height:3px;
-
-background:white;
-
-border-radius:50%;
-
-box-shadow:
-
-80px 50px #fff,
-200px 150px #fff,
-350px 80px #fff,
-500px 220px #fff,
-650px 100px #fff,
-800px 180px #fff,
-1000px 120px #fff,
-1200px 260px #fff,
-150px 300px #fff,
-400px 450px #fff,
-700px 500px #fff,
-900px 350px #fff,
-1100px 420px #fff,
-1300px 180px #fff,
-1450px 520px #fff;
-
-animation:starsMove 20s linear infinite;
-
-opacity:.8;
-
-}
-
-header{
-
-text-align:center;
-
-padding:60px 20px 20px;
-
-}
-
-header h1{
-
-font-size:48px;
-
-color:#ffd700;
-
-text-shadow:0 0 20px rgba(255,215,0,.5);
-
-margin-bottom:20px;
-
-}
-
-header h2{
-
-font-size:30px;
-
-font-weight:400;
-
-color:#fff;
-
-}
-
-.photo-box{
-
-display:flex;
-
-justify-content:center;
-
-margin-top:40px;
-
-}
-
-.photo-box img{
-
-width:320px;
-
-max-width:90%;
-
-border-radius:25px;
-
-border:5px solid rgba(255,255,255,.15);
-
-box-shadow:0 0 40px rgba(255,0,70,.35);
-
-transition:.5s;
-
-}
-
-.photo-box img:hover{
-
-transform:scale(1.03);
-
-box-shadow:0 0 60px rgba(255,0,80,.55);
-
-}
-}
-.background-stars{
-
-position:fixed;
-
-left:0;
-
-top:0;
-
-width:100%;
-
-height:100%;
-
-pointer-events:none;
-
-overflow:hidden;
-
-z-index:-2;
-
-}
-
-.background-stars::before{
-
-content:"";
-
-position:absolute;
-
-width:3px;
-
-height:3px;
-
-background:white;
-
-border-radius:50%;
-
-box-shadow:
-
-80px 50px #fff,
-200px 150px #fff,
-350px 80px #fff,
-500px 220px #fff,
-650px 100px #fff,
-800px 180px #fff,
-1000px 120px #fff,
-1200px 260px #fff,
-150px 300px #fff,
-400px 450px #fff,
-700px 500px #fff,
-900px 350px #fff,
-1100px 420px #fff,
-1300px 180px #fff,
-1450px 520px #fff;
-
-animation:starsMove 20s linear infinite;
-
-opacity:.8;
-
-}
-
-header{
-
-text-align:center;
-
-padding:60px 20px 20px;
-
-}
-
-header h1{
-
-font-size:48px;
-
-color:#ffd700;
-
-text-shadow:0 0 20px rgba(255,215,0,.5);
-
-margin-bottom:20px;
-
-}
-
-header h2{
-
-font-size:30px;
-
-font-weight:400;
-
-color:#fff;
-
-}
-
-.photo-box{
-
-display:flex;
-
-justify-content:center;
-
-margin-top:40px;
-
-}
-
-.photo-box img{
-
-width:320px;
-
-max-width:90%;
-
-border-radius:25px;
-
-border:5px solid rgba(255,255,255,.15);
-
-box-shadow:0 0 40px rgba(255,0,70,.35);
-
-transition:.5s;
-
-}
-
-.photo-box img:hover{
-
-transform:scale(1.03);
-
-box-shadow:0 0 60px rgba(255,0,80,.55);
-
-}
-.love-text{
-
-width:90%;
-
-max-width:900px;
-
-margin:50px auto;
-
-}
-
-.message-card,
 .glass{
 
-background:rgba(255,255,255,.08);
+width:94%;
 
-backdrop-filter:blur(18px);
-
--webkit-backdrop-filter:blur(18px);
-
-border:1px solid rgba(255,255,255,.15);
-
-border-radius:25px;
-
-padding:35px;
-
-box-shadow:0 8px 40px rgba(0,0,0,.35);
-
-margin-bottom:35px;
-
-transition:.4s;
+padding:18px;
 
 }
 
-.message-card:hover,
-.glass:hover{
+#topButton{
 
-transform:translateY(-6px);
+width:50px;
 
-box-shadow:0 15px 50px rgba(255,0,80,.25);
-
-}
-
-.message-card h2{
-
-text-align:center;
-
-font-size:34px;
-
-margin-bottom:25px;
-
-color:#ffd700;
-
-}
-
-#typedText,
-#message{
-
-font-size:22px;
-
-line-height:2.3;
-
-text-align:center;
-
-white-space:pre-wrap;
-
-color:#ffffff;
-
-}
-
-.counter{
-
-text-align:center;
-
-margin:50px auto;
-
-}
-
-.counter h3{
-
-font-size:30px;
-
-margin-bottom:25px;
-
-color:#ffd700;
-
-}
-
-#timer{
-
-font-size:28px;
-
-font-weight:bold;
-
-color:#ffb3b3;
-
-text-shadow:0 0 10px rgba(255,80,80,.5);
-
-}
-.music{
-
-display:flex;
-
-justify-content:center;
-
-margin:40px 0;
-
-}
-
-#playBtn{
-
-background:linear-gradient(135deg,#ff3b6b,#ff004c);
-
-color:white;
-
-border:none;
-
-padding:18px 40px;
-
-font-size:22px;
-
-border-radius:60px;
-
-cursor:pointer;
-
-transition:.4s;
-
-box-shadow:0 0 25px rgba(255,0,80,.45);
-
-font-family:'Vazirmatn',sans-serif;
-
-}
-
-#playBtn:hover{
-
-transform:scale(1.08);
-
-box-shadow:0 0 40px rgba(255,0,80,.8);
-
-}
-
-.gallery{
-
-width:90%;
-
-max-width:900px;
-
-margin:0 auto;
-
-}
-
-.gallery h3{
-
-text-align:center;
-
-font-size:30px;
-
-margin-bottom:20px;
-
-color:#ffd700;
-
-}
-
-.gallery p{
-
-text-align:center;
-
-font-size:22px;
-
-line-height:2;
-
-}
-
-.count-love{
-
-width:90%;
-
-max-width:900px;
-
-margin:40px auto;
-
-}
-
-#loveCounter{
-
-text-align:center;
-
-font-size:30px;
-
-font-weight:bold;
-
-color:#ffb6c1;
-
-margin-top:20px;
-
-}
-.final-message{
-
-width:90%;
-
-max-width:900px;
-
-margin:50px auto;
-
-}
-
-.final-message h2{
-
-text-align:center;
-
-font-size:36px;
-
-color:#ffd700;
-
-margin-bottom:25px;
-
-}
-
-.final-message p{
-
-font-size:22px;
-
-line-height:2.2;
-
-text-align:center;
-
-}
-
-.footer-love{
-
-text-align:center;
-
-padding:80px 20px 40px;
-
-}
-
-.footer-love h2{
-
-font-size:42px;
-
-color:#ff4d88;
-
-text-shadow:0 0 20px rgba(255,0,80,.6);
-
-margin-bottom:20px;
-
-}
-
-.footer-love h3{
-
-font-size:30px;
-
-font-weight:400;
-
-color:white;
-
-}
-
-#petals{
-
-position:fixed;
-
-left:0;
-
-top:0;
-
-width:100%;
-
-height:100%;
-
-pointer-events:none;
-
-overflow:hidden;
-
-z-index:5;
-
-}
-
-.petal{
-
-position:fixed;
-
-top:-60px;
-
-font-size:26px;
-
-animation:fall linear forwards;
-
-opacity:.9;
-
-}
-@keyframes beat{
-
-0%{
-
-transform:scale(1);
-
-}
-
-50%{
-
-transform:scale(1.12);
-
-}
-
-100%{
-
-transform:scale(1);
-
-}
-
-}
-
-@keyframes blink{
-
-0%{
-
-opacity:1;
-
-}
-
-50%{
-
-opacity:.3;
-
-}
-
-100%{
-
-opacity:1;
-
-}
-
-}
-
-@keyframes fadeIn{
-
-from{
-
-opacity:0;
-
-transform:translateY(30px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
-
-@keyframes starsMove{
-
-0%{
-
-transform:translateY(0);
-
-}
-
-100%{
-
-transform:translateY(-120px);
-
-}
-
-}
-
-@keyframes fall{
-
-0%{
-
-transform:translateY(-80px) rotate(0deg);
-
-opacity:1;
-
-}
-
-100%{
-
-transform:translateY(110vh) rotate(720deg);
-
-opacity:0;
-
-}
-
-}
-@media(max-width:900px){
-
-header h1{
-
-font-size:36px;
-
-}
-
-header h2{
-
-font-size:24px;
-
-}
-
-#heartButton{
-
-font-size:100px;
-
-}
-
-.welcome-box h1{
-
-font-size:32px;
-
-}
-
-.welcome-box p{
+height:50px;
 
 font-size:20px;
 
-}
+bottom:20px;
 
-.photo-box img{
-
-width:280px;
-
-}
-
-.message-card h2,
-
-.final-message h2,
-
-.gallery h3,
-
-.counter h3{
-
-font-size:28px;
-
-}
-
-#typedText,
-
-#message,
-
-.gallery p,
-
-.final-message p{
-
-font-size:20px;
-
-line-height:2;
-
-}
-
-#timer,
-
-#loveCounter{
-
-font-size:24px;
-
-}
-
-#playBtn{
-
-font-size:20px;
-
-padding:16px 30px;
-
-}
-
-.footer-love h2{
-
-font-size:34px;
-
-}
-
-.footer-love h3{
-
-font-size:24px;
+left:20px;
 
 }
 
 }
-@media(max-width:600px){
 
-header{
-
-padding-top:40px;
-
-}
-
-header h1{
-
-font-size:28px;
-
-line-height:1.6;
-
-}
-
-header h2{
-
-font-size:20px;
-
-}
-
-#heartButton{
-
-font-size:85px;
-
-}
-
-.welcome-box h1{
-
-font-size:26px;
-
-}
-
-.welcome-box p{
-
-font-size:17px;
-
-}
-
-.welcome-box span{
-
-font-size:15px;
-
-}
-
-.photo-box img{
-
-width:90%;
-
-border-radius:18px;
-
-}
-
-.message-card,
-.glass{
-
-padding:20px;
-
-border-radius:18px;
-
-}
-
-.message-card h2,
-.final-message h2{
-
-font-size:24px;
-
-}
-
-#typedText,
-#message,
-.gallery p,
-.final-message p{
-
-font-size:18px;
-
-line-height:2;
-
-}
-
-.counter h3,
-.gallery h3{
-
-font-size:22px;
-
-}
-
-#timer,
-#loveCounter{
-
-font-size:20px;
-
-line-height:1.8;
-
-}
-
-#playBtn{
-
-width:90%;
-
-max-width:320px;
-
-padding:15px;
-
-font-size:18px;
-
-}
-
-.footer-love{
-
-padding:50px 15px;
-
-}
-
-.footer-love h2{
-
-font-size:28px;
-
-}
-
-.footer-love h3{
-
-font-size:20px;
-
-}
-
-}
+/* ===========================
+   پایان فایل
+   =========================== */
